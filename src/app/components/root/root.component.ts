@@ -23,4 +23,8 @@ export class RootComponent implements OnInit {
     return this.appStateService.isUserLoggedIn();
   }
 
+  public isUserSigningUp() {
+    return this.appStateService.isUserSigningUp();
+  }
+
 }

@@ -8,15 +8,21 @@ export class ApplicationState {
     return this.state;
   }
 
-  public loggedOut() {
-    if(this.state === AppState.LoggedIn) {
+  public Logout() {
+    if (this.state === AppState.LoggedIn || this.state === AppState.SigningUp) {
       this.state = AppState.LoggedOut;
     }
   }
 
-  public loggedIn() {
+  public Login() {
     if (this.state === AppState.LoggedOut) {
       this.state = AppState.LoggedIn;
+    }
+  }
+
+  public SignUp() {
+    if (this.state === AppState.LoggedOut) {
+      this.state = AppState.SigningUp;
     }
   }
 

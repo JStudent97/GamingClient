@@ -14,11 +14,15 @@ export class AppStateService {
   }
 
   public markUserLoggedOut() {
-    this.appState.loggedOut();
+    this.appState.Logout();
   }
 
   public markUserLoggedIn() {
-    this.appState.loggedIn();
+    this.appState.Login();
+  }
+
+  public markUserSigningUp() {
+    this.appState.SignUp();
   }
 
   public getState() {
@@ -31,6 +35,10 @@ export class AppStateService {
 
   public isUserLoggedOut() {
     return this.appState.getState === AppState.LoggedOut;
+  }
+
+  public isUserSigningUp() {
+    return this.appState.getState === AppState.SigningUp;
   }
 
 }

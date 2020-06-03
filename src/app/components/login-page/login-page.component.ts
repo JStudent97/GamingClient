@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppStateService} from '../../services/applicationState/app-state.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appStateService: AppStateService) { }
 
   ngOnInit(): void {
   }
 
+  setUserInSignUp() {
+    this.appStateService.markUserSigningUp();
+  }
 }

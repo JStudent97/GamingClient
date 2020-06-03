@@ -10,11 +10,15 @@ let mainWindow;
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    // 1400 x 950 - body size
+    // 1600 x 1009 - size with upper bar (frame)
+    width: 1600,
+    height: 950,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    // don't show the upper bar (frame)
+    frame: false
   });
 
   mainWindow.loadURL(
@@ -25,7 +29,7 @@ function createWindow () {
     })
   );
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function () {
     mainWindow = null
