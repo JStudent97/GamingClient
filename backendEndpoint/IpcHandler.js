@@ -20,6 +20,14 @@ class IpcHandler {
       event.returnValue = {a: 'b'};
     });
 
+    ipc.on('create-user', async (event, data) => {
+      event.returnValue = await this.databaseHandler.createUser(data.email, data.username, data.password);
+    });
+
+    ipc.on('login-user', async (event, data) => {
+      event.returnValue = await this.databaseHandler.loginUser(data.username, data.password);
+    })
+
   }
 
 }

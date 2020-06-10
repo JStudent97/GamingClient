@@ -6,6 +6,10 @@ const IpcHandler = require('./backendEndpoint/IpcHandler');
 const ipcHandler = new IpcHandler(electron);
 ipcHandler.handleCommunication();
 
+const WebsocketHandler = require('./backendEndpoint/WebsocketHandler');
+const wsHandler = new WebsocketHandler();
+wsHandler.listenToWsEvents();
+
 let mainWindow;
 
 function createWindow () {

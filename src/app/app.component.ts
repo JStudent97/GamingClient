@@ -12,7 +12,6 @@ export class AppComponent {
 
   constructor() {
      const result = electron.ipcRenderer.sendSync('ping', {message: 'pong', b: 'info'});
-
      console.log(result);
 
   }

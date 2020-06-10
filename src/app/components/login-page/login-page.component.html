@@ -10,9 +10,9 @@
             </div>
             <div class="input-container">
               <label for="password_input">Password:</label>
-              <input type="password" id="password_input" name="password">
+              <input type="password" id="password_input" name="password" [(ngModel)]="password">
             </div>
-            <input type="submit" value="Login" class="btn submit-button" (click)="loginUser(username)">
+            <input type="submit" value="Login" class="btn submit-button" (click)="loginUser()">
             <input type="submit" value="SignUp" class="btn submit-button" (click)="setUserInSignUp()">
           </form>
         </div>
