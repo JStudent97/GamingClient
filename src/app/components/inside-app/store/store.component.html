@@ -1,0 +1,12 @@
+<div id="root-div">
+  <h1>Available in our store:</h1>
+
+  <div *ngFor="let game of games" class="game-container">
+    <div class="img-container" (click)="seeGameDetails(game.title, game.price, game.imagePath)">
+      <img src="{{game.imagePath}}" alt="">
+    </div>
+    <div class="gameInfo">
+      <p>{{game.title}}</p>
+      <p>{{game.price | currency:'EUR':'symbol'}}</p>
+    </div>
+</div>

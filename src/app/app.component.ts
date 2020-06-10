@@ -11,9 +11,9 @@ export class AppComponent {
   title = 'electron-angular-demo';
 
   constructor() {
-    const result = electron.ipcRenderer.sendSync('ping', {message: 'pong', b: 'info'});
+     const result = electron.ipcRenderer.sendSync('ping', {message: 'pong', b: 'info'});
 
-    console.log(result);
+     console.log(result);
 
   }
 }

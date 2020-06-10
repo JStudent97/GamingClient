@@ -1,0 +1,132 @@
+#root-div {
+  background: transparent;
+  height: 100vh;
+  width: 100%;
+  padding: 50px;
+  overflow: auto;
+}
+
+#friends-list {
+  padding-top: 1em;
+  background-color: #111111;
+}
+
+.row {
+  height: 83vh;
+  max-height: 83vh;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+ul li {
+  font-size: 1.3rem;
+  color: #aaaaaa;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+ul li:hover {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.bullet {
+  margin-right: 0.4em;
+  font-size: 1.3em;
+  color: red;
+}
+
+li:after {
+  margin-top: 0.4rem;
+  content: '';
+  display: block;
+  height: 1px;
+  width: 0;
+  background: transparent;
+  transition: width .5s ease, background-color .5s ease;
+}
+
+li:hover:after {
+  width: 100%;
+  background: #ffffff;
+}
+
+.selected-friend {
+  color: #ffffff !important;
+}
+
+.not-selected-friend {
+  border: 0;
+}
+
+#chat {
+  padding-top: 1em;
+  background: #222222;
+  height: 83vh;
+}
+
+#window {
+  height: 85%;
+  padding: 15px;
+  display: block;
+  overflow: auto;
+}
+
+#window::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #aaa;
+}
+
+#window::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: #aaaaaa;
+  border-radius: 10px;
+}
+
+#window::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #ffffff;
+}
+
+.name {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.chat-message {
+  font-size: 1.2em;
+}
+
+#input {
+  height: 3.5rem;
+  background: #111111;
+  border: 1px solid #111111;
+  border-radius: 10px;
+  width: 88%;
+  color: white;
+  font-size: 1.1em;
+  padding-left: 1em;
+}
+
+#send-button {
+  height: 3.5rem;
+  width: 10%;
+  margin-left: 1rem;
+  color: white;
+  background: #111111;
+  border: 1px solid #111111;
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none;
+}

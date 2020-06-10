@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppStateService} from '../../services/applicationState/app-state.service';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-my-root',
@@ -8,11 +9,22 @@ import {AppStateService} from '../../services/applicationState/app-state.service
 })
 export class RootComponent implements OnInit {
 
+  user: any;
+
   constructor(
-    private appStateService: AppStateService
-  ) { }
+    private appStateService: AppStateService,
+    private userService: UserService
+  ) {
+      this.userService.setCurrentUser$.subscribe((user) => {
+        this.sendUser(user);
+      });
+  }
 
   ngOnInit(): void {
+  }
+
+  private sendUser(user) {
+    this.user = user;
   }
 
   public isUserLoggedOut() {

@@ -1,0 +1,10 @@
+<div id="root-div">
+  <ul>
+    <li id="username-li">{{user.name}}</li>
+    <li class="menu-li" (click)="moveUserToStore()" [ngClass]=" cssClassState === 1 ? 'active' : 'simple'"><i class="fas fa-smog"></i>Store</li>
+    <li class="menu-li" (click)="moveUserToLibrary() " [ngClass]=" cssClassState === 2 ? 'active' : 'simple'"><i class="fas fa-gamepad"></i>Library</li>
+    <li class="menu-li" (click)="moveUserToFriends()" [ngClass]=" cssClassState === 3 ? 'active' : 'simple'"><i class="fas fa-user-friends"></i>Friends</li>
+    <li class="second-menu-li menu-li" (click)="logoutUser()"><i class="fas fa-sign-out-alt"></i>Logout</li>
+    <li class="menu-li"><i class="fas fa-power-off"></i>Exit</li>
+  </ul>
+</div>

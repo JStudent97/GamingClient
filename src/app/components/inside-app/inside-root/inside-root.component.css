@@ -1,0 +1,12 @@
+#root-div {
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  color: #AAAAAA;
+}
+
+.row {
+  height: 100%;
+  margin: 0;
+}
+

@@ -1,5 +1,9 @@
 export enum AppState {
   LoggedOut,
   LoggedIn,
-  SigningUp
+  SigningUp,
+  InStore,
+  InLibrary,
+  InFriends,
+  InGameDetailsPage
 }

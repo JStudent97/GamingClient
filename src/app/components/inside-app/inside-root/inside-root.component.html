@@ -1,0 +1,14 @@
+<div id="root-div">
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <app-menu [user]="user"></app-menu>
+    </div>
+    <div class="col-md-9" style="padding: 0;">
+      <app-store *ngIf="isUserInStore()"></app-store>
+      <app-library *ngIf="isUserInLibrary()"></app-library>
+      <app-friends *ngIf="isUserInFriends()" [user]="user"></app-friends>
+      <app-game-page *ngIf="isUserInGameDetailsPage()" [game]="game"></app-game-page>
+    </div>
+  </div>
+</div>
+

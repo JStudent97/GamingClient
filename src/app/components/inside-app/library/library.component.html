@@ -1,0 +1,14 @@
+<div id="root-div">
+  <h1>Your games</h1>
+
+  <div *ngFor="let game of games" class=" row game-container">
+    <div class="col-md-2 img-container">
+      <img src="{{game.imagePath}}" alt="">
+    </div>
+    <div class="col-md-10 gameInfo">
+      <p>{{game.title}}</p>
+      <p>Game information..how many hours played recently</p>
+      <button>Play</button>
+    </div>
+  </div>
+</div>
