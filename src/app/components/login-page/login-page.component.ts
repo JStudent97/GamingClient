@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppStateService} from '../../services/applicationState/app-state.service';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,12 +9,22 @@ import {AppStateService} from '../../services/applicationState/app-state.service
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private appStateService: AppStateService) { }
+  username: string;
+
+  constructor(
+    private appStateService: AppStateService,
+    private userService: UserService
+    ) { }
 
   ngOnInit(): void {
   }
 
   setUserInSignUp() {
     this.appStateService.markUserSigningUp();
+  }
+
+  loginUser(username) {
+    this.appStateService.markUserLoggedIn();
+    this.userService.setUser({name: username});
   }
 }

@@ -1,0 +1,24 @@
+<div id="root-div">
+  <h1>Get in touch with your friends!</h1>
+
+  <div class="row">
+    <div id="friends-list" class="col-md-2">
+      <h3>Friend list:</h3>
+      <ul>
+        <li *ngFor="let friend of friends" (click)="selectFriend(friend)" [ngClass]="selectedFriend === friend ? 'selected-friend' : 'not-selected-friend'"><span class="bullet">&#8226;</span>{{friend}}</li>
+      </ul>
+    </div>
+    <div id="chat" class="col-md-9">
+      <h3>You are currently chatting with <span class="name">{{selectedFriend}}</span></h3>
+      <div #windowDiv id="window" class="row">
+        <div *ngFor="let message of messages" class="chat-message">
+          <p><span class="name">{{message.sender}}</span>: {{message.message}}</p>
+        </div>
+      </div>
+      <form>
+        <input id="input" type="text" [placeholder]="placeholder" [(ngModel)]="inputMessage" [ngModelOptions]="{standalone: true}">
+        <button type="submit" id="send-button" (click)="addMessage()" (keyup.enter)="addMessage()">Send</button>
+      </form>
+    </div>
+  </div>
+</div>

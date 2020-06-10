@@ -5,14 +5,14 @@
         <div class="container-div">
           <form class="form" id="register-form">
             <div class="input-container" id="first-input">
-              <label for="email_input">Email:</label>
-              <input type="text" id="email_input" name="title">
+              <label for="username_input">Username:</label>
+              <input type="text" id="username_input" name="title" [(ngModel)]="username">
             </div>
             <div class="input-container">
               <label for="password_input">Password:</label>
               <input type="password" id="password_input" name="password">
             </div>
-            <input type="submit" value="Login" class="btn submit-button">
+            <input type="submit" value="Login" class="btn submit-button" (click)="loginUser(username)">
             <input type="submit" value="SignUp" class="btn submit-button" (click)="setUserInSignUp()">
           </form>
         </div>

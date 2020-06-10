@@ -1,4 +1,5 @@
 <div id="root-div">
   <app-login-page *ngIf="isUserLoggedOut()"></app-login-page>
   <app-signup-page *ngIf="isUserSigningUp()"></app-signup-page>
+  <app-inside-root *ngIf="isUserLoggedIn()" [user]=user></app-inside-root>
 </div>

@@ -1,0 +1,45 @@
+#root-div {
+  background: transparent;
+  font-size: 1.4rem;
+  height: 100%;
+  width: 100%;
+  border-right: 1px solid #AAAAAA;
+  padding-top: 4rem;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 3rem;
+}
+
+#username-li {
+  margin-bottom: 4rem;
+  /*color: #ffbf00;*/
+}
+
+.menu-li {
+  margin-bottom: 1rem;
+}
+
+.second-menu-li {
+  margin-top: 30rem;
+}
+
+i {
+  margin-right: 1rem;
+}
+
+.menu-li:hover {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.active {
+  color: #ffffff;
+}
+
+.simple {
+  color: #AAAAAA;
+}
+
+

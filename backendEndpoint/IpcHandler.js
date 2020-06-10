@@ -1,11 +1,15 @@
 "use strict";
+const DatabaseHandler = require('./DatabaseHandler');
 var ipc;
 
 class IpcHandler {
 
+  databaseHandler;
+
   constructor(electron) {
 
     ipc = electron.ipcMain;
+    this.databaseHandler = new DatabaseHandler();
 
   }
 
@@ -14,11 +18,6 @@ class IpcHandler {
     ipc.on('ping', (event, data) => {
       console.log(data);
       event.returnValue = {a: 'b'};
-    });
-
-    ipc.on('test', (event, payload) => {
-      console.log(payload.data);
-      event.returnValue = 'succes';
     });
 
   }

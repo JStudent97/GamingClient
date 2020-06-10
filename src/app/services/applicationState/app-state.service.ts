@@ -25,20 +25,52 @@ export class AppStateService {
     this.appState.SignUp();
   }
 
+  public markUserInStore() {
+    this.appState.InStore();
+  }
+
+  public markUserInLibrary() {
+    this.appState.InLibrary();
+  }
+
+  public markUserInFriends() {
+    this.appState.InFriends();
+  }
+
+  public markUserInGameDetailsPage() {
+    this.appState.InGameDetailsPage();
+  }
+
   public getState() {
     return this.appState.getState;
   }
 
-  public isUserLoggedIn() {
+  public isUserLoggedIn(): boolean {
     return this.appState.getState === AppState.LoggedIn;
   }
 
-  public isUserLoggedOut() {
+  public isUserLoggedOut(): boolean {
     return this.appState.getState === AppState.LoggedOut;
   }
 
-  public isUserSigningUp() {
+  public isUserSigningUp(): boolean {
     return this.appState.getState === AppState.SigningUp;
+  }
+
+  public isUserInStore(): boolean {
+    return this.appState.getInAppState === AppState.InStore;
+  }
+
+  public isUserInLibrary(): boolean {
+    return this.appState.getInAppState === AppState.InLibrary;
+  }
+
+  public isUserInFriends(): boolean {
+    return this.appState.getInAppState === AppState.InFriends;
+  }
+
+  public isUserInGameDetailsPage(): boolean {
+    return this.appState.getInAppState === AppState.InGameDetailsPage;
   }
 
 }
