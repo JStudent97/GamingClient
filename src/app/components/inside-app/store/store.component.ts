@@ -13,15 +13,16 @@ export class StoreComponent implements OnInit {
   public games: any[];
 
   constructor(private gamesService: GamesService,
-              private appStateService: AppStateService) {
+              private appStateService: AppStateService
+  ) {
     this.games = this.gamesService.getAllGames();
   }
 
   ngOnInit(): void {
   }
 
-  public seeGameDetails(title: string, price: number, imagePath: string) {
-      const game = new Game(title, price, imagePath);
+  public seeGameDetails(name: string, price: number, imageUri: string, description: string, requirements: string, developers: string[], publishers: string[], availableOnWindows: boolean, availableOnMac: boolean, availableOnLinux: boolean) {
+      const game = new Game(name, price, imageUri, description, requirements, developers, publishers, availableOnWindows, availableOnMac, availableOnLinux);
       this.gamesService.accessGameDetails(game);
       this.appStateService.markUserInGameDetailsPage();
   }

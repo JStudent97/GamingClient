@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-declare var electron: any;
 
 @Component({
   selector: 'app-root',
@@ -11,8 +10,5 @@ export class AppComponent {
   title = 'electron-angular-demo';
 
   constructor() {
-     const result = electron.ipcRenderer.sendSync('ping', {message: 'pong', b: 'info'});
-     console.log(result);
-
   }
 }

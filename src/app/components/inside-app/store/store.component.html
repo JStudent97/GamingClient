@@ -1,12 +1,15 @@
 <div id="root-div">
-  <h1>Available in our store:</h1>
+  <h1>Available to our partners:</h1>
 
   <div *ngFor="let game of games" class="game-container">
-    <div class="img-container" (click)="seeGameDetails(game.title, game.price, game.imagePath)">
-      <img src="{{game.imagePath}}" alt="">
+    <div class="img-container" (click)="game.price_overview ? seeGameDetails(game.name, game.price_overview.final_formatted, game.header_image, game.detailed_description, game.pc_requirements.minimum, game.developers, game.publishers, game.platforms.windows,
+    game.platforms.mac, game.platforms.linux) : seeGameDetails(game.name, 0, game.header_image, game.detailed_description, game.pc_requirements.minimum, game.developers, game.publishers, game.platforms.windows,
+    game.platforms.mac, game.platforms.linux)">
+      <img src="{{game.header_image}}" alt="">
     </div>
     <div class="gameInfo">
-      <p>{{game.title}}</p>
-      <p>{{game.price | currency:'EUR':'symbol'}}</p>
+      <p>{{game.name}}</p>
+      <p *ngIf="game.price_overview">{{game.price_overview.final_formatted}}</p>
+      <p *ngIf="!game.price_overview">FREE</p>
     </div>
 </div>

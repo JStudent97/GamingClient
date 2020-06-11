@@ -2,6 +2,7 @@ const {app, BrowserWindow} = require('electron');
 const electron = require('electron');
 const url = require("url");
 const path = require("path");
+
 const IpcHandler = require('./backendEndpoint/IpcHandler');
 const ipcHandler = new IpcHandler(electron);
 ipcHandler.handleCommunication();
