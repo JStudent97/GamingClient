@@ -6,21 +6,21 @@
           <form class="form" id="register-form">
             <div class="input-container" id="first-input">
               <label for="email_input">Email:</label>
-              <input type="text" id="email_input" name="title">
+              <input type="text" id="email_input" name="title" [(ngModel)]="email">
             </div>
             <div class="input-container">
               <label for="username_input">Username:</label>
-              <input type="text" id="username_input" name="password">
+              <input type="text" id="username_input" name="username" [(ngModel)]="username">
             </div>
             <div class="input-container">
               <label for="password_input">Password:</label>
-              <input type="password" id="password_input" name="password">
+              <input type="password" id="password_input" name="password" [(ngModel)]="password">
             </div>
             <div class="input-container">
               <label for="password_confirmation_input">Confirm password:</label>
               <input type="password" id="password_confirmation_input" name="password">
             </div>
-            <input type="submit" value="SignUp" class="btn submit-button" (click)="setUserLoggedOut()">
+            <input type="submit" value="SignUp" class="btn submit-button" (click)="createUser()">
           </form>
         </div>
       </div>

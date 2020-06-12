@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppStateService} from '../../services/applicationState/app-state.service';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-signup-page',
@@ -8,12 +9,23 @@ import {AppStateService} from '../../services/applicationState/app-state.service
 })
 export class SignupPageComponent implements OnInit {
 
-  constructor(private appStateService: AppStateService) { }
+  public email: string;
+  public username: string;
+  public password: string;
+
+  constructor(
+    private appStateService: AppStateService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  setUserLoggedOut() {
+  async createUser(): Promise<void> {
+    // create the user
+    await this.userService.createUser(this.email, this.username, this.password);
+
+    // return user to logging page
     this.appStateService.markUserLoggedOut();
   }
 

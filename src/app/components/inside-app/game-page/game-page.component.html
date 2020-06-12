@@ -1,3 +1,26 @@
 <div id="root-div">
-  <h1>{{game.getTitle}}</h1>
+  <h1>{{game.getName}}</h1>
+  <div class="row" id="img-container">
+    <div class="col-md-12">
+      <img src="{{game.getImageUri}}" alt="">
+    </div>
+  </div>
+  <div class="row" id="game-info">
+    <h3>Description: </h3>
+    <p [innerHTML]="game.getDescription()"></p>
+    <hr>
+    <h3>Minimum Requirements:</h3>
+    <p [innerHTML]="game.getRequirements()"></p>
+    <hr>
+    <p> The game has been developed by: </p>
+    <ul>
+      <li *ngFor="let developer of game.getDevelopers()">{{developer}}</li>
+    </ul>
+    <p> and has been published by: </p>
+    <ul>
+      <li *ngFor="let publisher of game.getPublishers()">{{publisher}}</li>
+    </ul>
+    <hr>
+    <p> The game is available on: <span *ngIf="game.getAvailableOnWindows">Windows </span><span *ngIf="game.getAvailableOnMac">Mac </span><span *ngIf="game.getAvailableOnLinux">Linux </span> </p>
+  </div>
 </div>

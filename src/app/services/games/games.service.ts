@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Game} from '../../classes/Game/game';
 import {Subject} from 'rxjs';
 
+declare var electron: any;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,31 +14,12 @@ export class GamesService {
   accessGame$ = this.accessGame.asObservable();
 
   constructor() {
-    for (let i = 0; i <= 10; i++) {
-      this.games.push({
-        title: 'Some Game',
-        price: 320,
-        imagePath: './assets/images/fantasy.jpg'
-      });
+    const gamesData =  electron.ipcRenderer.sendSync('fetch-all-games');
+    for (const appId in gamesData) {
+      if (gamesData.hasOwnProperty(appId)) {
+        this.games.push(gamesData[appId]);
+      }
     }
-
-    this.games.push({
-      title: 'Some Game1',
-      price: 3201,
-      imagePath: './assets/images/fantasy.jpg'
-    });
-
-    this.games.push({
-      title: 'Some Game2',
-      price: 3202,
-      imagePath: './assets/images/fantasy.jpg'
-    });
-
-    this.games.push({
-      title: 'Some Game3',
-      price: 3203,
-      imagePath: './assets/images/fantasy.jpg'
-    });
   }
 
   public getAllGames() {
