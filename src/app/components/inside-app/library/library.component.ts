@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GamesService} from '../../../services/games/games.service';
+declare var electron: any;
 
 @Component({
   selector: 'app-library',
@@ -15,6 +16,10 @@ export class LibraryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  launchGame(name) {
+    this.gamesService.launchGame(name);
   }
 
 }

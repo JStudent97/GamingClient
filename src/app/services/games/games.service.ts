@@ -10,14 +10,25 @@ declare var electron: any;
 export class GamesService {
 
   private games: any[] = [];
+  private installedGames: any[] = [];
   private accessGame = new Subject();
   accessGame$ = this.accessGame.asObservable();
 
   constructor() {
     const gamesData =  electron.ipcRenderer.sendSync('fetch-all-games');
-    for (const appId in gamesData) {
-      if (gamesData.hasOwnProperty(appId)) {
-        this.games.push(gamesData[appId]);
+    const installedGames = electron.ipcRenderer.sendSync('fetch-installed-games');
+
+    // add to games property the games from the object gamesData
+    this.addFromGamesObjectToArray(gamesData, 'games');
+
+    // add to installedGames property the games from the object installedGames
+    this.addFromGamesObjectToArray(installedGames, 'installedGames');
+  }
+
+  private addFromGamesObjectToArray(dataObject: object, property: string) {
+    for (const appId in dataObject) {
+      if (dataObject.hasOwnProperty(appId)) {
+        this[property].push(dataObject[appId]);
       }
     }
   }
@@ -27,11 +38,11 @@ export class GamesService {
   }
 
   public getInstalledGames() {
-    const installedGames: Game[] = [];
-    for (let i = 10; i < this.games.length; i++) {
-      installedGames.push(this.games[i]);
-    }
-    return installedGames;
+    return this.installedGames;
+  }
+
+  public launchGame(name) {
+    const result = electron.ipcRenderer.send('launch-game', name);
   }
 
   public accessGameDetails(game: Game) {

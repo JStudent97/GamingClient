@@ -33,6 +33,14 @@ class IpcHandler {
       event.returnValue = await this.gamesHandler.getGamesDetails();
     });
 
+    ipc.on('fetch-installed-games', (event, data) => {
+       event.returnValue = this.gamesHandler.getInstalledGames();
+    });
+
+    ipc.on('launch-game', (event, data) => {
+      event.returnValue = this.gamesHandler.launchGame(data);
+    });
+
   }
 
 }

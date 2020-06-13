@@ -3,12 +3,14 @@
 
   <div *ngFor="let game of games" class=" row game-container">
     <div class="col-md-2 img-container">
-      <img src="{{game.imagePath}}" alt="">
+      <img src="{{game.header_image}}" alt="">
     </div>
     <div class="col-md-10 gameInfo">
-      <p>{{game.title}}</p>
-      <p>Game information..how many hours played recently</p>
-      <button>Play</button>
+      <h5>{{game.name}}</h5>
+      <p>Game genres: <span *ngFor="let genre of game.genres">{{genre.description}} </span> </p>
+      <p>Total achievements for you to gain: {{game.achievements.total}}</p>
+      <p>Total hours played: {{game.playtime / 60 | number:'1.0-0'}} hours</p>
+      <button (click)="launchGame(game.name)">Play</button>
     </div>
   </div>
 </div>
