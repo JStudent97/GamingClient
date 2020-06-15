@@ -7,10 +7,6 @@ const IpcHandler = require('./backendEndpoint/IpcHandler');
 const ipcHandler = new IpcHandler(electron);
 ipcHandler.handleCommunication();
 
-const WebsocketHandler = require('./backendEndpoint/WebsocketHandler');
-const wsHandler = new WebsocketHandler();
-wsHandler.listenToWsEvents();
-
 let mainWindow;
 
 function createWindow () {
@@ -23,7 +19,7 @@ function createWindow () {
       nodeIntegration: true
     },
     // don't show the upper bar (frame)
-    frame: false
+    //frame: false
   });
 
   mainWindow.loadURL(
@@ -38,7 +34,11 @@ function createWindow () {
 
   mainWindow.on('closed', function () {
     mainWindow = null
-  })
+  });
+
+  const WebsocketHandler = require('./backendEndpoint/WebsocketHandler');
+  const wsHandler = new WebsocketHandler(mainWindow);
+  wsHandler.listenToWsEvents();
 }
 
 app.on('ready', createWindow);

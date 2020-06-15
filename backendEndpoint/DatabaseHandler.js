@@ -2,6 +2,8 @@
 const mongoose = require('mongoose');
 const db = require('./config/privateKeys').mongoUri;
 var User = require('./models/User');
+var FriendRequest = require('./models/FriendRequest');
+var Message = require('./models/Message');
 
 class DatabaseHandler {
 
@@ -76,6 +78,110 @@ class DatabaseHandler {
     }
 
     return response;
+  }
+
+  async createFriendRequest(sender, recipient) {
+    const friendRequest = new FriendRequest({
+      sender: sender,
+      recipient: recipient,
+      status: 1
+    });
+
+    friendRequest.save(function(err) {
+      if (err) throw err;
+
+      console.log('Friend request created...');
+    });
+
+    return {
+      status: true,
+      message: 'Friend request successfully created'
+    }
+  }
+
+  async getIncomingFriendRequests(recipient) {
+    const friendRequest = await FriendRequest.find({recipient: recipient, status: 1});
+    let response = {
+      incomingFriendRequest: false,
+      senders: null
+    };
+
+    if(!friendRequest.length) {
+      return response;
+    }
+
+    response.incomingFriendRequest = true;
+    response.senders = friendRequest;
+
+    return response;
+  }
+
+  async acceptFriendRequest(sender, recipient) {
+    await FriendRequest.findOneAndUpdate({
+      sender: sender,
+      recipient: recipient
+    }, {
+      status: 2
+    });
+
+    await User.findOneAndUpdate({
+      username: sender
+    }, {
+      "$push": {friendship: recipient}
+    });
+
+    await User.findOneAndUpdate({
+      username: recipient
+    }, {
+      "$push": {friendship: sender}
+    });
+
+    return {
+      status: true
+    }
+  }
+
+  async denyFriendRequest(sender, recipient) {
+    await FriendRequest.findOneAndUpdate({
+      sender: sender,
+      recipient: recipient
+    }, {
+      status: 3
+    });
+
+    return {
+      status: true
+    }
+  }
+
+  async getFriends(username) {
+    const record = await User.findOne({username: username})
+                             .select('friendship');
+
+    return record.friendship;
+  }
+
+  async addMessage(message) {
+    const messageRecord = new Message({
+      sender: message.sender,
+      receiver: message.receiver,
+      message: message.message
+    });
+
+    messageRecord.save(function(err) {
+      if (err) throw err;
+
+      console.log('Message created...');
+    });
+
+    return {
+      status: true,
+      message: 'Message successfully created'
+    }
+  }
+
+  async getMessages() {
+    return await Message.find();
   }
 
 

@@ -11,6 +11,10 @@ io.on('connection', (client) => {
     console.log(`received back an event with the following payload: ${payload}`);
   });
 
+  client.on('new-message', (payload) => {
+    client.emit('read messages');
+  });
+
 });
 
 server.listen(3000, () => {

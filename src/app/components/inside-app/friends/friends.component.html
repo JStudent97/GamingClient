@@ -1,6 +1,16 @@
 <div id="root-div">
   <h1>Get in touch with your friends!</h1>
+  <h5>Add friends:</h5>
+  <input id="friend-request-input" type="text" [(ngModel)]="friendToBe" [ngModelOptions]="{standalone: true}">
+  <button id="send-friend-request-button" (click)="sendFriendRequest()"> Send request </button>
 
+  <div *ngIf="this.incomingFriendRequests.incomingFriendRequest">
+    <div *ngFor="let fr of this.incomingFriendRequests.senders" class="incoming-request">
+      <p class="request-message">User {{fr._doc.sender}} wants to be friend with you:</p>
+      <button class="accept-request-button" (click)="acceptFriendRequest(fr._doc.sender, this.user.name)"><i class="fas fa-user-check"></i> Accept</button>
+      <button class="reject-request-button" (click)="denyFriendRequest(fr._doc.sender, this.user.name)"><i class="fas fa-user-times"></i> Reject </button>
+    </div>
+  </div>
   <div class="row">
     <div id="friends-list" class="col-md-2">
       <h3>Friend list:</h3>
@@ -16,8 +26,8 @@
         </div>
       </div>
       <form>
-        <input id="input" type="text" [placeholder]="placeholder" [(ngModel)]="inputMessage" [ngModelOptions]="{standalone: true}">
-        <button type="submit" id="send-button" (click)="addMessage()" (keyup.enter)="addMessage()">Send</button>
+        <input id="message-input" type="text" [placeholder]="placeholder" [(ngModel)]="inputMessage" [ngModelOptions]="{standalone: true}">
+        <button type="submit" id="send-message-button" (click)="addMessage()" (keyup.enter)="addMessage()">Send</button>
       </form>
     </div>
   </div>
